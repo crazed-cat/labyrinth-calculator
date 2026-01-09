@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <title>地底迷宮機率計算器 (Local ver)</title>
+
+  <!-- Google Charts -->
+  <script src="https://www.gstatic.com/charts/loader.js"></script>
+
+  <script defer src="Labyrinth_calculator.js"></script>
+</head>
+<body>
+  <style>
+    .mode_option label{ display: block;}
+    input[type="number"] {width: 3em;}
+    input:invalid {background-color: lightpink;}
+  </style>
+
+  <h1>地底迷宮機率計算器 2.0</h1>
+
+  <label>
+    模式：
+    <select id="mode_selector">
+      <option value="mode_1">1.預測最終樓層</option>
+      <option value="mode_2">2.看自己運氣如何</option>
+      <option value="mode_3">3.查詢目標樓層消耗貓數</option>      
+    </select>
+  </label>
+
+  <div>
+    <div id="mode_1" class="mode_option">
+      <label>當前樓層：地下<input type="number" id="st_floor" value="0" min="0" max="100" required>層</label>
+      <label>當前剩餘貓數：<input type="number" id="cat_left" min="0" required>隻(記得加上隊伍內的)</label>
+    </div>
+    <div id="mode_2" class="mode_option" hidden>
+      <label>抵達樓層：地下<input type="number" id="ed_floor" min="0" max="100" required>層</label>
+      <label>起始貓數：<input type="number" id="cat_init" min="0" required></label>
+      <label>剩餘貓數：<input type="number" id="cat_fin" min="0" required></label>
+      <label>敗場：<input type="number" id="lose" value="0" min="0" required></label>
+      <p>(抵達樓層和剩餘貓數，照結算頁面的輸入就好)</p>
+    </div>
+    <div id="mode_3" class="mode_option" hidden>
+      <label>樓層：地下<input type="number" id="floor" value="100" min="0" max="100" required>層</label>
+    </div>
+  </div>
+
+  <button id="start_button">開始計算</button>
+
+  <div id="text_div"></div>
+  <div id="chart_div"></div>
+</body>
